@@ -7,3 +7,4 @@
 7. Kemudian copy css nya.
 8. Buat folder countdown copy file .js dan .css ke folder tersebut.
 9. untuk ornamen caari floral pattern
+10. gunakan icons bootstrap jika perlu.
