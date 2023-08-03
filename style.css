@@ -214,6 +214,10 @@ hero p {
     padding: 60px;
     margin: 5px;
   }
+
+  .sticky-top {
+    overflow: hidden;
+  }
 }
 
 /* mobile phone */
@@ -231,5 +235,9 @@ hero p {
   .mynavbar .nav-link {
     font-size: 2rem;
     text-align: center;
+  }
+
+  .sticky-top {
+    overflow: hidden;
   }
 }

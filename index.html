@@ -251,5 +251,22 @@
         },
       });
     </script>
+
+    <script>
+      const hamburger = document.querySelector(".navbar-toggler");
+      const stickyTop = document.querySelector(".sticky-top");
+      const offcanvas = document.querySelector(".offcanvas");
+      // ketika hamburget diclik
+
+      offcanvas.addEventListener("show.bs.offcanvas", function () {
+        // cara kasih css pakai javascript
+        stickyTop.style.overflow = "visible";
+      });
+
+      offcanvas.addEventListener("hidden.bs.offcanvas", function () {
+        // cara kasih css pakai javascript
+        stickyTop.style.overflow = "hidden";
+      });
+    </script>
   </body>
 </html>
