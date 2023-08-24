@@ -42,7 +42,9 @@
         <h1>Muhtar & Titin (TM)</h1>
         <p>Akan Melangsungkan resepsi pernikahan dalam:</p>
         <div class="simply-countdown"></div>
-        <a href="#undangan" class="btn btn-lg mt-4">Lihat Undangan</a>
+        <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll()"
+          >Lihat Undangan</a
+        >
       </main>
     </section>
 
@@ -412,6 +414,132 @@
       </div>
     </section>
 
+    <section class="rsvp" id="rsvp">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <h2>Konfirmasi Kehadiran</h2>
+            <p>Isi form dibawah ini untuk melakukan konfirmasi kehadiran.</p>
+          </div>
+        </div>
+
+        <form
+          class="row row-cols-md-auto g-3 align-items-center justify-content-center"
+          method="POST"
+          action="https://script.google.com/macros/s/AKfycbyVsfJS6rUmaKFi3nd_NiyzplFdxi1vIadZcf7kwNsgZ28WBfEcQMZzzo3UbK7j3AQNBw/exec"
+          id="my-form"
+        >
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="nama" name="nama" />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="jumlah" class="form-label">Jumlah</label>
+              <input
+                type="number"
+                class="form-control"
+                id="jumlah"
+                name="jumlah"
+                min="1"
+                max="5"
+                lenght="1"
+                value="1"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="status" class="form-label">Konfirmasi</label>
+              <select name="status" id="status" class="form-select">
+                <option selected>Pilih Salah Satu</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12" style="margin-top: 35px">
+            <button class="btn btn-primary">Kirim</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="gifts" id="gifts">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <span>Ungkapan tanda kasih</span>
+            <h2>Kirim Hadiah</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
+              voluptatibus ratione nulla vel sit consectetur.
+            </p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center">
+          <div class="col-md-6">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="font-weight-bold">BCA</div>
+                123456789 - MUHTAR HIDAYAT
+              </li>
+              <li class="list-group-item">
+                <div class="font-weight-bold">BSI</div>
+                987654321 - MUHTAR HIDAYAT
+              </li>
+              <li class="list-group-item">
+                <div class="font-weight-bold">Saweria</div>
+                QR Code
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <small class="block"
+              >&copy; 2023 TiMU Wedding. All Rights Reserved.</small
+            >
+            <small class="block"
+              >Design By
+              <a href="https://www.instagram.com/muhtartm/" target="_blank"
+                >@muhtarTM</a
+              >.</small
+            >
+
+            <ul class="mt-3">
+              <li>
+                <a href="https://www.instagram.com/muhtartm/" target="_blank"
+                  ><i class="bi bi-instagram"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/muhtar-hidayat-40057935/"
+                  target="_blank"
+                  ><i class="bi bi-linkedin"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://twitter.com/MuhtarIP" target="_blank"
+                  ><i class="bi bi-twitter"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
@@ -451,6 +579,50 @@
       offcanvas.addEventListener("hidden.bs.offcanvas", function () {
         // cara kasih css pakai javascript
         stickyTop.style.overflow = "hidden";
+      });
+    </script>
+
+    <!-- untuk disbale scrolling pertama kali -->
+    <script>
+      const rootElement = document.querySelector(":root");
+      function disableScroll() {
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        window.onscroll = function () {
+          window.scrollTo(scrollTop, scrollLeft);
+        };
+
+        rootElement.style.scrollBehavior = "auto";
+      }
+
+      function enableScroll() {
+        window.onscroll = function () {
+          rootElement.style.scrollBehavior = "smooth";
+          localStorage.setItem("opened", "true");
+        };
+      }
+
+      // jika sudah klik sekali untuk enable scrollnya, m
+      if (!localStorage.getItem("opened")) {
+        disableScroll();
+      }
+    </script>
+
+    <script>
+      window.addEventListener("load", function () {
+        const form = document.getElementById("my-form");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const data = new FormData(form);
+          const action = e.target.action;
+          fetch(action, {
+            method: "POST",
+            body: data,
+          }).then(() => {
+            alert("Konfirmasi kehadiran berhasil terkirim!");
+          });
+        });
       });
     </script>
   </body>
