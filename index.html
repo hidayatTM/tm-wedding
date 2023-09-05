@@ -38,8 +38,8 @@
       class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white"
     >
       <main>
-        <h4>Kepada Bapak/Ibu/Saudara/i,</h4>
-        <h1>Muhtar & Titin (TM)</h1>
+        <h4>Kepada <span> Bapak/Ibu/Saudara/i, </span></h4>
+        <h1>Muhtar & Titin</h1>
         <p>Akan Melangsungkan resepsi pernikahan dalam:</p>
         <div class="simply-countdown"></div>
         <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll()"
@@ -170,6 +170,15 @@
               Jl. Gatot Subroto KM 8 RT 001/02, RT.002/RW.002, Manis Jaya,
               Tangerang, Kota Tangerang
             </p>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15865.765530925284!2d106.5710763!3d-6.2053625!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fefbc817c66b%3A0xea1afba5be524b1!2sSurya%20Kencana%20Abadi!5e0!3m2!1sid!2sid!4v1693896193243!5m2!1sid!2sid"
+              width="100%"
+              height="250"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
             <a
               href="https://goo.gl/maps/z1WA8zC5c6adTSw86"
               target="_blank"
@@ -465,6 +474,37 @@
             <button class="btn btn-primary">Kirim</button>
           </div>
         </form>
+
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-6">
+            <div id="disqus_thread"></div>
+            <script>
+              /**
+               *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+               *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+              /*
+              var disqus_config = function () {
+              this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+              };http://disq.us/t/4irzr4
+              */
+              (function () {
+                // DON'T EDIT BELOW THIS LINE
+                var d = document,
+                  s = d.createElement("script");
+                s.src = "https://tm-wedding.disqus.com/embed.js";
+                s.setAttribute("data-timestamp", +new Date());
+                (d.head || d.body).appendChild(s);
+              })();
+            </script>
+            <noscript
+              >Please enable JavaScript to view the
+              <a href="https://disqus.com/?ref_noscript"
+                >comments powered by Disqus.</a
+              ></noscript
+            >
+          </div>
+        </div>
       </div>
     </section>
 
@@ -600,8 +640,8 @@
       const rootElement = document.querySelector(":root");
       const audioIconWrapper = document.querySelector(".audio-icon-wrapper");
       const song = document.querySelector("#song");
+      const playButton = document.querySelector(".audio-icon-wrapper i");
       let isPlaying = false;
-      let playButton = document.querySelector(".audio-icon-wrapper i");
 
       function disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -623,7 +663,7 @@
       }
 
       function playAudio() {
-        // song.volume = 0.1;
+        song.volume = 0.5;
         audioIconWrapper.style.display = "flex";
         song.play();
         isPlaying = true;
@@ -666,6 +706,16 @@
           });
         });
       });
+    </script>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get("n") || "";
+      const pronoun = urlParams.get("p") || "Bapak/Ibu/Saudara/i";
+      const namaContainer = document.querySelector(".hero h4 span");
+      namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ",");
+
+      document.querySelector("#nama").value = nama;
     </script>
   </body>
 </html>
